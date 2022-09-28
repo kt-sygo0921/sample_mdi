@@ -20,7 +20,6 @@ const About = () =>  {
       <StyledP>アバウトです</StyledP>
       <StyledP2 size='s'>アバウトです</StyledP2>
       <StyledP2 size='l'>アバウトです</StyledP2>
-      <StyledP2 size='l'>テスト</StyledP2>
     </div>
   )
 }
