@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import styled from '@emotion/styled'
+import {gql, useQuery} from '@apollo/client';
 
 type Size = "l" | "s";
 
@@ -29,13 +30,31 @@ const StyledP2 = styled.p<StyledPprops>`
   font-size: ${(props) => props.size === "l" ? "20px" : "5px"};
 `
 
+const query = gql`
+  query($id:ID!) {
+    Hot(id:$id) {
+      id
+      title
+    }
+  }
+`;
+
 const About: React.FC<Props> = (props) =>  {
+  const {loading, error, data} = useQuery(query,{
+    variables: {
+      id: 2
+    }
+  });
+
+  if(loading) return <p>Loading...</p>;
+  if(error) return <p>Error</p>
   return (
     <div>
       <StyledP>アバウトです</StyledP>
       <StyledP2 size='s'>アバウトです</StyledP2>
       <StyledP2 size='l'>アバウトです</StyledP2>
-      <StyledP2 size={props.size ? props.size : 's'}>{props.coffee.title}</StyledP2>
+      <StyledP2 size={props.size ? props.size : 's'}>RESTで取得したコーヒーは{props.coffee.title}</StyledP2>
+      <StyledP2 size='l'>grapphqlで取得したコーヒーは{data.Hot.title}です</StyledP2>
     </div>
   )
 }
