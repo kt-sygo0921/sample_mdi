@@ -52,7 +52,7 @@ const About: React.FC<Props> = (props) =>  {
     <div>
       <StyledP>アバウトです</StyledP>
       <StyledP2 size='s'>アバウトです</StyledP2>
-      <StyledP2 size='l'>アバウトです</StyledP2>
+      <StyledP2 size='l'>codespaceのテスト</StyledP2>
       <StyledP2 size={props.size ? props.size : 's'}>RESTで取得したコーヒーは{props.coffee.title}</StyledP2>
       <StyledP2 size='l'>grapphqlで取得したコーヒーは{data.Hot.title}です</StyledP2>
     </div>
